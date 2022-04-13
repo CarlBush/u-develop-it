@@ -33,14 +33,14 @@ router.get("/candidate/:id", (req, res) => {
                     ON candidates.party_id = parties.id
                     WHERE candidates.id = ?`;
     const params = [req.params.id];
-    db.query(sql, params, (err, rows) => {
+    db.query(sql, params, (err, row) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
         res.json({
             message: "What up G",
-            data: rows
+            data: row
         });
     });
 });
